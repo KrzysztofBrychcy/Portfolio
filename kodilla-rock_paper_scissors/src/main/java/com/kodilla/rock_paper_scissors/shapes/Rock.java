@@ -7,7 +7,7 @@ public class Rock implements Shape {
     }
 
     @Override
-    public String getName() {
+    public String toString() {
         return name;
     }
 }

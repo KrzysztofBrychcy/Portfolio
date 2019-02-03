@@ -1,53 +1,58 @@
 package com.kodilla.rock_paper_scissors.rules;
 
+import com.kodilla.rock_paper_scissors.players.Comp;
 import com.kodilla.rock_paper_scissors.players.Players;
-import com.kodilla.rock_paper_scissors.shapes.Shape;
 
 public class Rules {
-    public static final String PAPER = "PAPER";
-    public static final String ROCK = "ROCK";
-    public static final String SCISSORS = "SCISSORS";
+    public static final String PAPER = "Papier";
+    public static final String ROCK = "Kamień";
+    public static final String SCISSORS = "Nożyczki";
     private Players winner;
     private Players losser;
 
+    public Rules() {
+    }
 
-    public void whoWins(Players player1, Players computer) {
-        switch (player1.getShape().getName()) {
-            case PAPER:
-            {
-                if(computer.getShape().getName() == PAPER) {
-                    System.out.println("Remis");
-                } else if (computer.getShape().getName() == ROCK) {
-                    winner = computer;
-                    losser = player1;
-                } else if (computer.getShape().getName() == SCISSORS) {
+    public void whoWins(Players player1, Comp computer) {
+        if(player1.getShape() == computer.getShape()) {
+            System.out.println("Remis");
+        } else {
+            if(player1.getShape().toString() == PAPER) {
+                if(computer.getShape().toString() == ROCK) {
                     winner = player1;
                     losser = computer;
+                } else {
+                    winner = computer;
+                    losser = player1;
                 }
             }
-            case ROCK:
-            {
-                if(computer.getShape().getName() == ROCK) {
-                    System.out.println("Remis");
-                } else if (computer.getShape().getName() == PAPER) {
-                    winner = computer;
-                    losser = player1;
-                } else if (computer.getShape().getName() == SCISSORS) {
+            if(player1.getShape().toString() == ROCK) {
+                if(computer.getShape().toString() == SCISSORS) {
                     winner = player1;
                     losser = computer;
+                } else {
+                    winner = computer;
+                    losser = player1;
                 }
             }
-            case SCISSORS:
-                if(computer.getShape().getName() == SCISSORS) {
-                    System.out.println("Remis");
-                } else if (computer.getShape().getName() == ROCK) {
-                    winner = computer;
-                    losser = player1;
-                } else if (computer.getShape().getName() == PAPER) {
+            if (player1.getShape().toString() == SCISSORS) {
+                if(computer.getShape().toString() == PAPER) {
                     winner = player1;
                     losser = computer;
+                } else {
+                    winner = computer;
+                    losser = player1;
                 }
+            }
+
+            screenScore(winner,losser);
         }
+    }
+
+    private void screenScore(Players winner, Players looser) {
+        winner.win();
+        looser.lost();
+        System.out.println("Wygrywa --> " + winner.getNick() + " <--");
     }
 
 

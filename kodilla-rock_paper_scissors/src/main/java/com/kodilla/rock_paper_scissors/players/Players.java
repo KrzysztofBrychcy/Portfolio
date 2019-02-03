@@ -4,20 +4,27 @@ import com.kodilla.rock_paper_scissors.shapes.Shape;
 
 public class Players {
     private String nick;
-    private int wins;
-    private int loses;
+    private int wins = 0;
+    private int loses = 0;
     private Shape shape;
+
+    public Players() {
+    }
 
     public Players(String nick) {
         this.nick = nick;
     }
 
-    public void setWins(int wins) {
-        this.wins = wins;
+    public void setNick(String nick) {
+        this.nick = nick;
     }
 
-    public void setLoses(int loses) {
-        this.loses = loses;
+    public void win() {
+        this.wins ++;
+    }
+
+    public void lost() {
+        this.loses ++;
     }
 
     public Shape getShape() {
@@ -32,11 +39,20 @@ public class Players {
         return nick;
     }
 
+    public void cleanScore() {
+        wins = 0;
+        loses = 0;
+    }
+
     public int getWins() {
         return wins;
     }
 
     public int getLoses() {
         return loses;
+    }
+
+    public String getScore() {
+        return  "Wygrane: " + getWins() + "-" + getLoses() + " :Przegrane";
     }
 }
