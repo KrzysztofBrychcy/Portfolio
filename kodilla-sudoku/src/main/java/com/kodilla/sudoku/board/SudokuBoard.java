@@ -1,14 +1,21 @@
 package com.kodilla.sudoku.board;
 
+import com.kodilla.sudoku.prototype.Prototype;
 import java.util.ArrayList;
 
-public class SudokuBoard {
+public class SudokuBoard extends Prototype {
     public final static int MIN_INDEX = 0;
     public final static int MAX_INDEX = 8;
     SudokuElementDto sudokuElementDto = new SudokuElementDto();
     ArrayList<SudokuRow> board = new ArrayList<>();
 
     public SudokuBoard() {
+    }
+
+    public void prepareSudokuBoard() {
+        setBoard();
+        setBlocks();
+        setBlocksOrder();
     }
 
     public ArrayList<SudokuRow> getBoard() {
@@ -119,6 +126,22 @@ public class SudokuBoard {
 
     public int getBlockOrder(int v, int h) {
         return board.get(h-1).getRow().get(v-1).getBlockOrder();
+    }
+
+    public SudokuBoard shallowCopy() throws CloneNotSupportedException {
+        return (SudokuBoard)super.clone();
+    }
+
+    public SudokuBoard deepCopy() throws CloneNotSupportedException {
+        SudokuBoard clonedBoard = (SudokuBoard)super.clone();
+        clonedBoard.board = new ArrayList<>();
+        clonedBoard.prepareSudokuBoard();
+        for(int y = 1; y <= 9; y ++){
+            for(int x = 1; x <= 9; x ++) {
+                clonedBoard.setElement(x,y,board.get(y-1).getRow().get(x-1).getValue());
+            }
+        }
+        return clonedBoard;
     }
 
     @Override

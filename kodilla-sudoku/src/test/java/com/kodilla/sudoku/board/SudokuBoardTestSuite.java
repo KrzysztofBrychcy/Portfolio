@@ -132,6 +132,7 @@ public class SudokuBoardTestSuite {
         //When
 
         sudokuElementDto.fromBlocksToHV(1,8);
+
         int h1 = sudokuElementDto.getElementHV().getH();
         int v1 = sudokuElementDto.getElementHV().getV();
 
@@ -154,7 +155,7 @@ public class SudokuBoardTestSuite {
         int v = board.sudokuElementDto.getElementHV().getV();
         //Then
         System.out.println(p1);
-        System.out.println(h + " - " + v);
-        System.out.println(h1 + " - " + v1);
+        System.out.println(v + " - " + h);
+        System.out.println(v1 + " - " + h1);
     }
 }

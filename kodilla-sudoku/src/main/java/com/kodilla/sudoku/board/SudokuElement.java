@@ -1,8 +1,11 @@
 package com.kodilla.sudoku.board;
 
+import java.util.ArrayList;
+
 public class SudokuElement {
     int value, EMPTY = 0;
     int block, blockOrder = 0;
+    public ArrayList<Integer> cloneVarations = new ArrayList<>();
 
     public SudokuElement() {
         this.value = EMPTY;
@@ -37,4 +40,11 @@ public class SudokuElement {
         return blockOrder;
     }
 
+    public ArrayList<Integer> getCloneVarations() {
+        return cloneVarations;
+    }
+
+    public void setCloneVarations(ArrayList<Integer> cloneVarations) {
+        this.cloneVarations = cloneVarations;
+    }
 }
