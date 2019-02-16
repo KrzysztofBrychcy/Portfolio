@@ -12,6 +12,7 @@ public class Menu {
     private int howManyRounds, acctualRound, stop;
     private String nick;
     private Scanner read = new Scanner(System.in);
+    private Scanner readEnd = new Scanner(System.in);
     private boolean end, fin = false;
     private Comp comp = new Comp();
     private Players player1 = new Players();
@@ -28,10 +29,12 @@ public class Menu {
         while(!fin) {
             sets();
             game();
-            System.out.println("\nCzy chcesz skończyć grać? T/N");
-            stop = read.nextInt();
-            if(stop == 1)
-                fin = true;
+            System.out.println("Czy chcesz zakończyć grę? T/N");
+            endGame();
+            if(fin == true) {
+                System.out.println("Czy na pewno? T/N");
+                endGame();
+            }
         }
         System.out.println("Może zagramy jeszcze kiedyś!");
     }
@@ -45,7 +48,10 @@ public class Menu {
             acctualRound ++;
             System.out.println("\nRunda #" + acctualRound + "\n");
 
-            System.out.println("Wybierz ruch: \n1 -> Kamień\n2 -> Papier\n3 -> Nożyce");
+            System.out.println("Wybierz ruch: \n" +
+                    "1 -> Kamień\n" +
+                    "2 -> Papier\n" +
+                    "3 -> Nożyce");
             playGround.chooseShape(player1, playGround.playerChoose(player1));
             System.out.println("Wybrałeś: " + player1.getShape());
             playGround.chooseShape(comp, compShape.nextInt(3)+1);
@@ -58,6 +64,7 @@ public class Menu {
             }
         }
     }
+
     public void winner() {
         if(player1.getWins() > comp.getWins()) {
             System.out.println("\nWygrał --->" + player1.getNick());
@@ -66,28 +73,36 @@ public class Menu {
             System.out.println("\nWygrał --->" + comp.getNick());
         }
     }
+
     public void setPlayerName() {
         System.out.println("Podaj swój nick");
         nick = read.nextLine();
         player1.setNick(nick);
 
     }
+
     public void sets() {
         System.out.println("Po ilu wygranych rundach jest zwyciętswo?");
         howManyRounds = read.nextInt();
 
     }
+
     public void endGame() {
         String endOfGame;
-        System.out.println("Czy chcesz zakończyć grę? T/N");
-
-        endOfGame = read.nextLine();
+        endOfGame = readEnd.nextLine();
         switch (endOfGame){
             case "T":
-                end = true;
+                System.out.println("end of game = " + endOfGame + "  " + fin);
+                fin = true;
+                System.out.println(fin);
+                break;
+            case "t":
+                System.out.println("end of game = " + endOfGame + "  " + fin);
+                fin = true;
+                System.out.println(fin);
                 break;
             default:
-                end = false;
+                fin = false;
         }
     }
 }
