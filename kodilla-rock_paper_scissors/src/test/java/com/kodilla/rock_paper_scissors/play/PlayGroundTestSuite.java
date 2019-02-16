@@ -15,10 +15,15 @@ public class PlayGroundTestSuite {
         Comp comp = new Comp();
         Random random = new Random();
         //When
-        playGround.chooseShape(comp, random.nextInt(3));
-        System.out.println(comp.getNick() + " -> " + comp.getShape());
-        playGround.chooseShape(player,0);
-        System.out.println(player.getNick() + " - > " + player.getShape());
+
+        for(int i = 0; i < 20; i++) {
+//        System.out.println(random.nextInt(4)+1);
+            playGround.chooseShape(comp, random.nextInt(4)+1);
+//            playGround.chooseShape(comp, 4);
+            System.out.println(comp.getNick() + " -> " + comp.getShape());
+        }
+//        playGround.chooseShape(player,0);
+//        System.out.println(player.getNick() + " - > " + player.getShape());
         //Then
 
     }

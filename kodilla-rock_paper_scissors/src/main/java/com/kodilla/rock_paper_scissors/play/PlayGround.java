@@ -1,10 +1,7 @@
 package com.kodilla.rock_paper_scissors.play;
 
 import com.kodilla.rock_paper_scissors.players.Players;
-import com.kodilla.rock_paper_scissors.shapes.Paper;
-import com.kodilla.rock_paper_scissors.shapes.Rock;
-import com.kodilla.rock_paper_scissors.shapes.Scissors;
-import com.kodilla.rock_paper_scissors.shapes.Shape;
+import com.kodilla.rock_paper_scissors.shapes.*;
 
 import java.util.Scanner;
 
@@ -13,6 +10,7 @@ public class PlayGround {
     private Shape rock = new Rock();
     private Shape paper = new Paper();
     private Shape scissors = new Scissors();
+    private Shape spock = new Spock();
 
 
     public PlayGround() {
@@ -38,6 +36,10 @@ public class PlayGround {
 
             case 3:
                 player.setShape(scissors);
+            break;
+
+            case 4:
+                player.setShape(spock);
             break;
 
             default:

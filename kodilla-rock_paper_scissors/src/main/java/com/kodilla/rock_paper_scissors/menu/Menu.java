@@ -4,7 +4,6 @@ import com.kodilla.rock_paper_scissors.play.PlayGround;
 import com.kodilla.rock_paper_scissors.players.Comp;
 import com.kodilla.rock_paper_scissors.players.Players;
 import com.kodilla.rock_paper_scissors.rules.Rules;
-
 import java.util.Random;
 import java.util.Scanner;
 
@@ -54,7 +53,7 @@ public class Menu {
                     "3 -> Nożyce");
             playGround.chooseShape(player1, playGround.playerChoose(player1));
             System.out.println("Wybrałeś: " + player1.getShape());
-            playGround.chooseShape(comp, compShape.nextInt(3)+1);
+            playGround.chooseShape(comp, compShape.nextInt(4)+1);
             System.out.println("Komputer wybrał: " + comp.getShape());
             rules.whoWins(player1,comp);
             System.out.println(player1.getScore());
@@ -67,10 +66,10 @@ public class Menu {
 
     public void winner() {
         if(player1.getWins() > comp.getWins()) {
-            System.out.println("\nWygrał --->" + player1.getNick());
+            System.out.println("\nWygrał ---> " + player1.getNick());
         }
         else {
-            System.out.println("\nWygrał --->" + comp.getNick());
+            System.out.println("\nWygrał ---> " + comp.getNick());
         }
     }
 
@@ -92,14 +91,10 @@ public class Menu {
         endOfGame = readEnd.nextLine();
         switch (endOfGame){
             case "T":
-                System.out.println("end of game = " + endOfGame + "  " + fin);
                 fin = true;
-                System.out.println(fin);
                 break;
             case "t":
-                System.out.println("end of game = " + endOfGame + "  " + fin);
                 fin = true;
-                System.out.println(fin);
                 break;
             default:
                 fin = false;
